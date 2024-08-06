@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 
 function PlacesList() {
   const [places, setPlaces] = useState([])

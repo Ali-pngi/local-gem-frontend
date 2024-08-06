@@ -1,4 +1,4 @@
-//import React from 'react'
+
 //import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {useState} from 'react'
@@ -7,6 +7,7 @@ import {useState} from 'react'
 import * as authService from '../src/services/authService'
 import SignupForm from './components/SignupForm/SignupForm.jsx'
 import SigninForm from './components/SigninForm/SigninForm'
+import Navbar from './components/Navbar'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
