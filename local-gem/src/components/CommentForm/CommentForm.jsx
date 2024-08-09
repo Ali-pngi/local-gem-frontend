@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import "./CommentForm.css"
 import { Form, Button, Container } from 'react-bootstrap'
 import "./CommentForm.scss"
 
@@ -32,7 +31,7 @@ const CommentForm = ({ handleAddComment }) => {
         onChange={handleChange}
       />
       </Form.Group>
-   <div className="btn-container">
+        <div className="btn-container">
           <Button variant="primary" type="submit">SUBMIT</Button>
         </div>
       </Form>
