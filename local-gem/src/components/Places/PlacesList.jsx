@@ -1,5 +1,8 @@
-import { Link } from 'react-router-dom';
-import './PlacesList.scss';
+import { Link } from 'react-router-dom'
+import './PlacesList.scss'
+
+const PlaceList = ({ places }) => {
+  console.log(places)
 
 const PlaceList = ({ places }) => {
   console.log(places);
@@ -11,24 +14,21 @@ const PlaceList = ({ places }) => {
           <article className="place-card">
             <header>
               <h2>{place.placeName}</h2>
-              <p>
-                {place.user ? (
-                  `${place.user.username} posted on ${new Date(place.createdAt).toLocaleDateString()}`
-                ) : (
-                  `Posted on ${new Date(place.createdAt).toLocaleDateString()}`
-                )}
-              </p>
             </header>
             <p>{place.description}</p>
             {place.image && (
-              <div
-                className="upload-image"
-                style={{ backgroundImage: `url(${place.image})` }}
-              ></div>
+              <div className="upload-image" style={{ backgroundImage: `url(${place.image})` }}> </div>
             )}
           </article>
         </Link>
-      ))}
+        </Col>
+      )
+          })
+    :
+    <h2> No posts to display.</h2>
+  }
+      </Row>
+     </Container>
     </main>
   );
 };

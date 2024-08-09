@@ -1,23 +1,28 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import "./CommentForm.css"
+import { Form, Button, Container } from 'react-bootstrap'
+import "./CommentForm.scss"
 
 const CommentForm = ({ handleAddComment }) => {
   // State
-  const [formData, setFormData] = useState({ text: '' })
+  const [formData, setFormData] = useState({ text: '' });
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
-  }
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
     // handleAddComment
     handleAddComment(formData)
-    setFormData({ text: '' })
-  }
+    setFormData({ text: '' });
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="text-input">Your comment:</label>
+    <Container className="comment-form">
+    <Form onSubmit={handleSubmit}>
+    <Form.Group controlId="comment-input" className="comment-group">
+
       <textarea
         required
         type="text"
@@ -26,9 +31,14 @@ const CommentForm = ({ handleAddComment }) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button type="submit">SUBMIT COMMENT</button>
-    </form>
-  )
-}
+      </Form.Group>
+   <div className="btn-container">
+          <Button variant="primary" type="submit">SUBMIT</Button>
+        </div>
+      </Form>
+      </Container>
+  );
+};
 
-export default CommentForm
+
+export default CommentForm;

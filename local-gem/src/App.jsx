@@ -15,7 +15,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-
 // Services
 import * as placeService from './services/placeService'
 import * as authService from '../src/services/authService.js'
