@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
+import './PlacesList.scss' 
 
 const PlaceList = ({places}) => {
   console.log(places)
 
 
   return (
-    <main>
+    <main className="places-list">
       {places.map((place) => (
-        <Link key={place._id} to={`/places/${place._id}`}>
-          <article>
+        <Link key={place._id} to={`/places/${place._id}`} className="place-card-link">
+          <article className="place-card">
             <header>
               <h2>{place.placeName}</h2>
               <p>

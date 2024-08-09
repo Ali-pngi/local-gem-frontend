@@ -10,6 +10,9 @@ import PlaceForm from './components/Places/PlaceForm.jsx'
 import Navbar from './components/Navbar/Navbar.jsx'
 import UserProfile from './components/UserProfile/UserProfile.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
 
@@ -66,22 +69,41 @@ const App = () => {
 
   return (
     <AuthedUserContext.Provider value={user}>
-      <Navbar user={user} handleSignout={handleSignout} />
-      <Routes>
-        {user ? (
-          <>
-            <Route path="/" element={<UserProfile user={user} />} />
-            <Route path="/places" element={<PlacesList places={places} />} />
-            <Route path="/places/new" element={<PlaceForm handleAddPlace={handleAddPlace} />} />
-            <Route path="/places/:placeId" element={<PlaceDetails handleDeletePlace={handleDeletePlace} />} />
-            <Route path="/places/:placeId/edit" element={<PlaceForm handleUpdatePlace={handleUpdatePlace} />} />
-          </>
-        ) : (
-          <Route path="/" element={<Landing />} />
-        )}
-        <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-        <Route path="/signin" element={<SigninForm setUser={setUser} />} />
-      </Routes>
+      {user ? (
+        <Container>
+          <Row>
+            <Col xs={{ span: 2 }}>
+              <Navbar user={user} handleSignout={handleSignout} />
+            </Col>
+            <Col xs={{ span: 10 }}>
+              <Routes>
+                <Route path="/" element={<UserProfile user={user} />} />
+                <Route path="/places" element={<PlacesList places={places} />} />
+                <Route path="/places/new" element={<PlaceForm handleAddPlace={handleAddPlace} />} />
+                <Route path="/places/:placeId" element={<PlaceDetails handleDeletePlace={handleDeletePlace} />} />
+                <Route path="/places/:placeId/edit" element={<PlaceForm handleUpdatePlace={handleUpdatePlace} />} />
+              </Routes>
+            </Col>
+          </Row>
+        </Container>
+      ) : (
+        <>
+          <Container>
+            <Row>
+              <Col xs={{ span: 4, offset: 1 }}>
+                <Navbar user={user} handleSignout={handleSignout} />
+              </Col>
+              <Col xs={{ span: 6 }}>
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/signup" element={<SignupForm setUser={setUser} />} />
+                  <Route path="/signin" element={<SigninForm setUser={setUser} />} />
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+        </>
+      )}
     </AuthedUserContext.Provider>
   )
 }
