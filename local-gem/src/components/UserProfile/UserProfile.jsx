@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, ListGroup } from 'react-bootstrap';
-import * as placeService from '../../services/placeService'; // Updated to use placeService
+import * as placeService from '../../services/placeService';
 import './UserProfile.scss';
 
 const UserProfile = ({ user }) => {
@@ -19,22 +19,34 @@ const UserProfile = ({ user }) => {
     <Container className="user-profile">
       <h1>Welcome {user.username}</h1>
       <h2>Your Places</h2>
-      {places.length > 0 ? (
-        <ListGroup>
-          {places.map((place) => (
-            <ListGroup.Item key={place._id}>
-              <Card>
+      <div className="places-list">
+        {places.length > 0 ? (
+          places.map((place) => (
+            <div key={place._id} className="place-card-link">
+              <Card className="place-card">
                 <Card.Body>
-                  <Card.Title>{place.placeName}</Card.Title>
+                  <header>
+                    <Card.Title>{place.placeName}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      {place.user.username} posted on{' '}
+                      {new Date(place.createdAt).toLocaleDateString()}
+                    </Card.Subtitle>
+                  </header>
                   <Card.Text>{place.description}</Card.Text>
+                  {place.image && (
+                    <div
+                      className="upload-image"
+                      style={{ backgroundImage: `url(${place.image})` }}
+                    ></div>
+                  )}
                 </Card.Body>
               </Card>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      ) : (
-        <p>You have not made any places yet.</p>
-      )}
+            </div>
+          ))
+        ) : (
+          <p>You have not made any places yet.</p>
+        )}
+      </div>
     </Container>
   );
 };

@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
-import './PlacesList.scss' 
+import { Link } from 'react-router-dom';
+import './PlacesList.scss';
 
-const PlaceList = ({places}) => {
-  console.log(places)
-
+const PlaceList = ({ places }) => {
+  console.log(places);
 
   return (
     <main className="places-list">
@@ -13,19 +12,25 @@ const PlaceList = ({places}) => {
             <header>
               <h2>{place.placeName}</h2>
               <p>
-                {place.user.username} posted on{' '}
-                {new Date(place.createdAt).toLocaleDateString()}
+                {place.user ? (
+                  `${place.user.username} posted on ${new Date(place.createdAt).toLocaleDateString()}`
+                ) : (
+                  `Posted on ${new Date(place.createdAt).toLocaleDateString()}`
+                )}
               </p>
             </header>
             <p>{place.description}</p>
             {place.image && (
-              <div className="upload-image" style={{backgroundImage: `url(${place.image})`}}> </div>
+              <div
+                className="upload-image"
+                style={{ backgroundImage: `url(${place.image})` }}
+              ></div>
             )}
           </article>
         </Link>
       ))}
     </main>
-  )
-}
+  );
+};
 
-export default PlaceList
+export default PlaceList;

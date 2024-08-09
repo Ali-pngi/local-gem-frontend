@@ -75,7 +75,7 @@ const App = () => {
             <Col xs={{ span: 2 }}>
               <Navbar user={user} handleSignout={handleSignout} />
             </Col>
-            <Col xs={{ span: 10 }}>
+            <Col xs={{ span: 9, offset: 1 }}>
               <Routes>
                 <Route path="/" element={<UserProfile user={user} />} />
                 <Route path="/places" element={<PlacesList places={places} />} />
