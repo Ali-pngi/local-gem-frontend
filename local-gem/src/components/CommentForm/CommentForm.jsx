@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import "./CommentForm.css"
 import { Form, Button, Container } from 'react-bootstrap'
 import "./CommentForm.scss"
 
